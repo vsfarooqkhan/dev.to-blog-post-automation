@@ -18,7 +18,7 @@ def generate_blog_content():
     topic = random.choice(TOPICS)
     
     # Use OpenAI to generate content
-    response = openai.Completion.create(
+    response = openai.ChatCompletion.create(
       engine="text-davinci-003",
       prompt=f"Write a blog post about {topic}.",
       max_tokens=1000
