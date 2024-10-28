@@ -2,7 +2,7 @@ name: Daily Blog Post
 
 on:
   schedule:
-    - cron: '0 9 * * *'  # Runs daily at 9:00 UTC
+    - cron: '0 18 * * *'  # Runs daily at 6:00 PM UTC
 
 jobs:
   post-blog:
