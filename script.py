@@ -19,7 +19,7 @@ def generate_blog_content():
     
     # Use OpenAI to generate content
     response = openai.ChatCompletion.create(
-        model="gpt-3.5-turbo",  # or "gpt-4" if you have access
+        model="gpt-3",  # or "gpt-4" if you have access
         messages=[
             {"role": "user", "content": "Generate a blog post about AI and its impact on society."}
         ]
