@@ -19,9 +19,10 @@ def generate_blog_content():
     
     # Use OpenAI to generate content
     response = openai.ChatCompletion.create(
-      engine="text-davinci-003",
-      prompt=f"Write a blog post about {topic}.",
-      max_tokens=1000
+        model="gpt-3.5-turbo",  # or "gpt-4" if you have access
+        messages=[
+            {"role": "user", "content": "Generate a blog post about AI and its impact on society."}
+        ]
     )
     content = response['choices'][0]['text'].strip()
     return topic, content
