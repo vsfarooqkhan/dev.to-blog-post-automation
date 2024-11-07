@@ -9,13 +9,21 @@ OPENAI_API_KEY = os.getenv('OPENAI_API_KEY')
 DEV_TO_API_KEY = os.getenv('DEV_TO_API_KEY')
 
 openai.api_key = OPENAI_API_KEY
+PROMPTS = [
+    "Suggest a unique and up-to-date blog topic related to front-end technologies in 2024.",
+    "Provide a fresh, trending blog topic on modern front-end development practices.",
+    "What are some advanced concepts in front-end development to write about today?",
+    "List a current topic for a technical blog post in front-end development or React.",
+    "Suggest an exciting and new blog idea for a Dev.to post on TypeScript or JavaScript frameworks."
+]
 
 # Define a function to generate a random topic using OpenAI's API
 def get_random_topic():
+    selected_prompt = random.choice(PROMPTS)
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # or use "gpt-4" if you have access
         messages=[
-            {"role": "user", "content": "Suggest a random blog topic related to front-end technologies. It should be very less and opt to dev.to blog post"}
+            {"role": "user", "content": selected_prompt}
         ]
     )
     topic = response['choices'][0]['message']['content'].strip()
@@ -26,7 +34,7 @@ def generate_blog_content(topic):
     response = openai.ChatCompletion.create(
         model="gpt-3.5-turbo",  # or "gpt-4" if you have access
         messages=[
-            {"role": "user", "content": f"Write a blog post about {topic}."}
+            {"role": "user", "content": f"Write a detailed and updated blog post about '{topic}' with recent insights."}
         ]
     )
     # content = response['choices'][0]['text'].strip()
