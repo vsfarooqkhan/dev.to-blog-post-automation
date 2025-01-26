@@ -10,7 +10,7 @@ DEV_TO_API_KEY = os.getenv('DEV_TO_API_KEY')
 
 openai.api_key = OPENAI_API_KEY
 PROMPTS = [
-    "Suggest a unique and up-to-date blog topic related to front-end technologies in 2024.",
+    "Suggest a unique and up-to-date blog topic related to front-end technologies in 2025.",
     "Provide a fresh, trending blog topic on modern front-end development practices.",
     "What are some advanced concepts in front-end development to write about today?",
     "List a current topic for a technical blog post in front-end development or React.",
@@ -27,7 +27,7 @@ def get_random_topic():
         ]
     )
     topic = response['choices'][0]['message']['content'].strip()
-    return topic
+    return topic.strip('"')  # Remove any surrounding quotes
 def generate_blog_content(topic):
     
     # Use OpenAI to generate content
